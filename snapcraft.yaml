@@ -1,0 +1,28 @@
+name: juju-kubectl
+base: core20
+summary: Juju plugin for running kubectl
+description: |
+  Allows easily running kubectl on Kubernetes models
+
+grade: stable
+confinement: classic
+adopt-info: juju-kubectl
+
+apps:
+  juju-kubectl:
+    command: bin/juju-kubectl
+
+parts:
+  juju-kubectl:
+    source: .
+    plugin: rust
+    # https://forum.snapcraft.io/t/issue-with-rebuilding-a-rust-snap/10830
+    override-build: |
+      [ -f "$SNAPCRAFT_PART_INSTALL/bin/juju-kubectl" ] && rm "$SNAPCRAFT_PART_INSTALL/bin/juju-kubectl"
+      snapcraftctl build
+      VERSION=$($SNAPCRAFT_PART_INSTALL/bin/juju-kubectl --version | cut -d' ' -f2)
+      snapcraftctl set-version $VERSION
+
+architectures:
+  - amd64
+  - arm64
