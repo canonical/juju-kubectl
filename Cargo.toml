@@ -7,5 +7,5 @@ edition = "2018"
 [dependencies]
 clap = "3.0.0-beta.2"
 failure = "0.1"
-juju-rs = { git = "https://github.com/knkski/rust-libjuju.git" }
+juju-rs = { git = "https://github.com/knkski/rust-libjuju.git", rev = "bff873c" }
 tempfile = "3.1"

@@ -61,7 +61,7 @@ fn main() -> Result<(), Error> {
         Substrate::MicroK8s => {
             run("microk8s.kubectl", &args.commands)?;
         }
-        Substrate::CDK => {
+        Substrate::CharmedK8s => {
             let kubecfg = NamedTempFile::new()?;
             let path = &kubecfg.path().as_os_str().to_string_lossy();
 

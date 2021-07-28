@@ -658,8 +658,8 @@ dependencies = [
 ]
 
 [[package]]
-name = "juju-bundle"
-version = "0.2.0"
+name = "juju-kubectl"
+version = "0.1.0"
 dependencies = [
  "clap",
  "failure",
@@ -669,8 +669,8 @@ dependencies = [
 
 [[package]]
 name = "juju-rs"
-version = "0.1.0"
-source = "git+https://github.com/knkski/rust-libjuju.git#f40ddb1db89fbd640906c8a59f506b7678e6fbd8"
+version = "0.2.0"
+source = "git+https://github.com/knkski/rust-libjuju.git?rev=bff873c#bff873c02c59713e70011fa34444e42f3d3e783f"
 dependencies = [
  "dirs",
  "ex",
