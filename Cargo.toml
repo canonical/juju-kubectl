@@ -5,7 +5,8 @@ authors = ["Kenneth Koski <kennethkoski@gmail.com>"]
 edition = "2018"
 
 [dependencies]
-clap = "3.0.0-beta.2"
+clap = "=3.0.0-beta.2"
 failure = "0.1"
-juju-rs = { git = "https://github.com/knkski/rust-libjuju.git", rev = "bff873c" }
+juju-rs = { git = "https://github.com/knkski/rust-libjuju.git", rev = "c0c1fa3" }
+structopt = "0.2"
 tempfile = "3.1"

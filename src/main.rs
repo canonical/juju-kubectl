@@ -1,7 +1,7 @@
 //! Juju plugin for running `kubectl` against the current model
 
-use clap::{AppSettings, Clap};
 use failure::Error;
+use structopt::{self, clap::AppSettings, StructOpt};
 use tempfile::NamedTempFile;
 
 use juju::cmd::run;
@@ -22,20 +22,20 @@ fn parse_model_name(model_name: &str) -> (Option<&str>, Option<&str>) {
     }
 }
 
-#[derive(Clap)]
-#[clap(about, author, version, setting(AppSettings::TrailingVarArg))]
+#[derive(StructOpt, Debug)]
+#[structopt(raw(setting = "AppSettings::TrailingVarArg"))]
 struct Args {
-    #[clap(short, long)]
+    #[structopt(short = "m", long = "model")]
     /// Model to operate in. Accepts \[<controller name>\:\]<model name>
     model: Option<String>,
 
-    #[clap(multiple = true)]
+    #[structopt(multiple = true)]
     /// Arguments to pass to kubectl
     commands: Vec<String>,
 }
 
 fn main() -> Result<(), Error> {
-    let mut args: Args = Args::parse();
+    let mut args: Args = Args::from_args();
     let model_name = args.model.unwrap_or_else(String::new);
     let (controller_name, model_name) = parse_model_name(&model_name);
 
