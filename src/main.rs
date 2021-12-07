@@ -1,6 +1,6 @@
 //! Juju plugin for running `kubectl` against the current model
 
-use failure::Error;
+use anyhow::Error;
 use structopt::{self, clap::AppSettings, StructOpt};
 use tempfile::NamedTempFile;
 
